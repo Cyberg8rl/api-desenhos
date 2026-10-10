@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo Interativo - API Front-End</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Cabeçalho da Aplicação -->
+    <header class="header">
+        <h1>Universo de Desenhos Animados</h1>
+        <p>Consumo de dados em tempo real via API pública (Com interatividade por clique)</p>
+    </header>
+
+    <!-- Contentor Principal -->
+    <main class="container">
+        <div id="cards-container" class="cards-grid">
+            <p class="loading">A carregar dados da API...</p>
+        </div>
+    </main>
+
+    <!-- Janela Modal Detalhada (Oculta por padrão) -->
+    <div id="modal-detalhes" class="modal-overlay">
+        <div class="modal-content">
+            <button id="btn-fechar" class="close-btn">&times;</button>
+            <img id="modal-img" src="" alt="Imagem do Personagem">
+            <div class="modal-text">
+                <h2 id="modal-nome">Nome do Personagem</h2>
+                <p><strong>Status:</strong> <span id="modal-status"></span></p>
+                <p><strong>Espécie:</strong> <span id="modal-especie"></span></p>
+                <p><strong>Género:</strong> <span id="modal-genero"></span></p>
+                <p><strong>Origem:</strong> <span id="modal-origem"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Importação do script JavaScript -->
+    <script src="js/script.js"></script>
+</body>
+</html>

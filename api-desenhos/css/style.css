@@ -1,0 +1,244 @@
+/* Definição de Variáveis com Estética Futurista / Cyberpunk */
+:root {
+    --bg-space: #030712;         /* Fundo preto cósmico profundo */
+    --neon-cyan: #00f3ff;        /* Ciano brilhante tipo holograma */
+    --neon-magenta: #ff0055;     /* Magenta energético */
+    --glass-bg: rgba(15, 23, 42, 0.75); /* Fundo translúcido para efeito vidro */
+    --glass-border: rgba(0, 243, 255, 0.3); /* Borda brilhante em ciano */
+    --text-glow: 0 0 10px rgba(0, 243, 255, 0.5);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', Courier, monospace, sans-serif; /* Estilo terminal/futurista */
+    background-color: var(--bg-space);
+    color: #f1f5f9;
+    min-height: 100vh;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(0, 243, 255, 0.05) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(255, 0, 85, 0.05) 0%, transparent 40%);
+    line-height: 1.6;
+}
+
+/* --- CABEÇALHO HOLOGRÁFICO --- */
+.header {
+    text-align: center;
+    padding: 3rem 1rem;
+    background: linear-gradient(180deg, rgba(3, 7, 18, 0.95), rgba(15, 23, 42, 0.8));
+    border-bottom: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.2);
+}
+
+.header h1 {
+    font-size: 2.4rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-main);
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 12px rgba(0, 243, 255, 0.6);
+}
+
+.header h1 span {
+    color: var(--neon-cyan);
+}
+
+.header p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- CONTENTOR E GRELHA DE CARTÕES --- */
+.container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1.5rem;
+}
+
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.loading {
+    text-align: center;
+    grid-column: 1 / -1;
+    font-size: 1.2rem;
+    color: var(--neon-cyan);
+    text-shadow: var(--text-glow);
+    padding: 4rem;
+    letter-spacing: 2px;
+}
+
+/* --- CARTÕES COM ESTILO HOLOGRÁFICO (GLASSMORPHISM) --- */
+.card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 25px rgba(0, 243, 255, 0.4), inset 0 0 15px rgba(0, 243, 255, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    filter: brightness(0.9) contrast(1.1);
+    transition: var(--transition);
+}
+
+.card:hover img {
+    filter: brightness(1.1) contrast(1.2);
+}
+
+.card-info {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.card-info h3 {
+    font-size: 1.15rem;
+    color: #f8fafc;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.card-info p {
+    font-size: 0.85rem;
+    color: var(--neon-cyan);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- JANELA MODAL TIPO PAINEL DE NAVEGAÇÃO --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(3, 7, 18, 0.85);
+    backdrop-filter: blur(15px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 1000;
+    padding: 1rem;
+}
+
+.modal-overlay.ativo {
+    opacity: 1;
+    visibility: visible;
+}
+
+.modal-content {
+    background: rgba(15, 23, 42, 0.95);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 480px;
+    padding: 2.5rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 40px rgba(0, 243, 255, 0.3), inset 0 0 20px rgba(0, 243, 255, 0.1);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.modal-overlay.ativo .modal-content {
+    transform: scale(1);
+}
+
+.modal-content img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+}
+
+.modal-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.modal-text h2 {
+    color: var(--neon-cyan);
+    font-size: 1.6rem;
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(0, 243, 255, 0.5);
+    letter-spacing: 1px;
+}
+
+.modal-text p {
+    font-size: 0.9rem;
+    color: #cbd5e1;
+    background: rgba(0, 243, 255, 0.03);
+    padding: 0.6rem 1rem;
+    border-radius: 8px;
+    border-left: 3px solid var(--neon-cyan);
+    border-right: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.modal-text span {
+    color: var(--neon-magenta);
+    font-weight: 700;
+    text-shadow: 0 0 8px rgba(255, 0, 85, 0.4);
+}
+
+.close-btn {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    background: rgba(255, 0, 85, 0.2);
+    border: 1px solid var(--neon-magenta);
+    color: var(--neon-magenta);
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 0 10px rgba(255, 0, 85, 0.3);
+}
+
+.close-btn:hover {
+    background-color: var(--neon-magenta);
+    color: #fff;
+    box-shadow: 0 0 20px var(--neon-magenta);
+    transform: rotate(90deg);
+}
